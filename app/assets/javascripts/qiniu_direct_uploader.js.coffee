@@ -57,7 +57,7 @@ $.fn.QiniuUploader = (options) ->
     text
 
   setUploadForm = ->
-    $uploadForm.fileupload
+    inner_settings =
       dropZone: dropPasteZone
       pasteZone: dropPasteZone
       add: (e, data) ->
@@ -115,12 +115,6 @@ $.fn.QiniuUploader = (options) ->
 
       formData: (form) ->
         data = form.serializeArray()
-        #fileType = ""
-        #if "type" of @files[0]
-          #fileType = @files[0].type
-        #data.push
-          #name: "x:contentType"
-          #value: fileType
 
         key = $uploadForm.data("key")
           .replace('{timestamp}', new Date().getTime())
@@ -139,6 +133,8 @@ $.fn.QiniuUploader = (options) ->
         unless 'FormData' of window
           $uploadForm.find("input[name='key']").val(key)
         data
+
+    $uploadForm.fileupload $.extend true, {}, settings, inner_settings
 
   buildCallbackData = ($uploadForm, file, result) ->
     content = {}
