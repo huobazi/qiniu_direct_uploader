@@ -18,6 +18,7 @@ Or install it yourself as:
 
 ## Usage
 
+see the example project: https://github.com/huobazi/qiniu-direct-upload-example
 
 ## Contributing
 
