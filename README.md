@@ -63,6 +63,12 @@ $(document).ready ->
       console.log(data)
 ```
 
+see also:
+
+1. http://docs.qiniu.com/api/v6/put.html#upload-without-callback
+2. http://docs.qiniu.com/api/v6/put.html#upload-api
+3. http://docs.qiniu.com/api/v6/put.html#uploadToken-returnBody
+
 ## Contributing
 
 1. Fork it
