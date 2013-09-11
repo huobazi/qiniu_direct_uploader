@@ -3,29 +3,31 @@ module QiniuDirectUploader
   class Uploader
     def initialize(options)
       @options = options.reverse_merge(
-        expires_in: 360,
-        ssl: false,
-        store_path: '/uploads/',
-        custom_fields: {},
-        submit_button_id: nil,
-        progress_bar_id: nil,
-        callback_method: "POST"
+        expires_in:         360,
+        ssl:                false,
+        store_path:         '/uploads/',
+        custom_fields:      {},
+        submit_button_id:   nil,
+        progress_bar_id:    nil,
+        drop_paste_zone_id: nil,
+        callback_method:    "POST"
       )
     end
 
     def form_options
       {
-        id: @options[:id],
-        class: @options[:class],
-        method: "post",
+        id:                 @options[:id],
+        class:              @options[:class],
+        method:             "post",
         authenticity_token: false,
-        multipart: true,
+        multipart:          true,
         data: {
-          store_path: @options[:store_path],
-          callback_url: @options[:callback_url],
-          callback_method: @options[:callback_method],
+          store_path:       @options[:store_path],
+          callback_url:     @options[:callback_url],
+          callback_method:  @options[:callback_method],
           submit_button_id: @options[:submit_button_id],
-          progress_bar_id: @options[:progress_bar_id]
+          drop_paste_zone_id: @options[:drop_paste_zone_id],
+          progress_bar_id:  @options[:progress_bar_id]
         }.reverse_merge(@options[:data] || {})
       }
     end

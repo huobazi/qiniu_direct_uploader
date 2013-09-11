@@ -25,17 +25,20 @@ $.fn.QiniuUploader = (options) ->
     removeProgressBarWhenFailed: false
     progressBarId: undefined
     buttonId: undefined
+    dropPasteZoneId: undefined
     allowMultipleFiles: true
 
   $.extend settings, options
 
-  submitButtonId =  $uploadForm.data('submit-button-id')
-  progressBarId = $uploadForm.data('progress-bar-id')
+  submitButtonId = $uploadForm.data('submit-button-id')
+  progressBarId  = $uploadForm.data('progress-bar-id')
+  dropPasteZoneId= $uploadForm.data('drop-paste-zone-id')
 
-  submitButton = $('#' + submitButtonId) if submitButtonId
-  progressBar = $('#' + progressBarId) if progressBarId
+  submitButton   = $('#' + submitButtonId) if submitButtonId
+  progressBar    = $('#' + progressBarId) if progressBarId
+  dropPasteZone  = if dropPasteZoneId then $('#' + dropPasteZoneId) else $(document)
 
-  currentFiles = []
+  currentFiles   = []
   formsForSubmit = []
 
   if submitButton and submitButton.length > 0
@@ -55,7 +58,8 @@ $.fn.QiniuUploader = (options) ->
 
   setUploadForm = ->
     $uploadForm.fileupload
-
+      dropZone: dropPasteZone
+      pasteZone: dropPasteZone
       add: (e, data) ->
         file = data.files[0]
         file.uniqueId = generateRandomString(10) + Math.random().toString(36).substr(2,12)
