@@ -5,7 +5,6 @@ module QiniuDirectUploader
       @options = options.reverse_merge(
         expires_in:         360,
         ssl:                false,
-        store_path:         '/uploads/',
         custom_fields:      {},
         submit_button_id:   nil,
         progress_bar_id:    nil,
@@ -22,7 +21,6 @@ module QiniuDirectUploader
         authenticity_token: false,
         multipart:          true,
         data: {
-          store_path:       @options[:store_path],
           callback_url:     @options[:callback_url],
           callback_method:  @options[:callback_method],
           submit_button_id: @options[:submit_button_id],
@@ -44,18 +42,12 @@ module QiniuDirectUploader
     end
 
     def default_key
-      "{timestamp}-{unique-id}-#{SecureRandom.hex}-{filename}"
-    end
-
-    def store_path
-      store_path = @options[:store_path]
-      store_path = '/' + store_path if store_path.slice(0, 1) != '/'
-      store_path =  store_path+ '/' if store_path.slice(-1) != '/'
+      "uploads/{timestamp}-{unique-id}-#{SecureRandom.hex}-{filename}"
     end
 
     def key
-      return store_path + @options[:key] if @options[:key]
-      return store_path + default_key
+      return @options[:key] if @options[:key]
+      return  default_key
     end
 
     def action

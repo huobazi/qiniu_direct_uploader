@@ -149,12 +149,6 @@ $.fn.QiniuUploader = (options) ->
     setUploadForm()
     this
 
-  @storePath = ->
-    newPath = $uploadForm.data('store-path')
-    newPath = '/' + newPath if newPath.slice(0, 1) != '/'
-    newPath =  newPath + '/' if newPath.slice(-1) != '/'
-    newPath
-
   @customCallbackData = (newData) ->
     settings.customCallbackData = newData
 
