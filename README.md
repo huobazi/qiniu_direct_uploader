@@ -25,11 +25,10 @@ see the example project: https://github.com/huobazi/qiniu-direct-upload-example
 <%= qiniu_uploader_form callback_url: items_path,
   bucket:        'spec-test',
   id:            "photograph-uploader",
-  key:           "{timestamp}-{unique-id}-#{SecureRandom.hex}-{filename}",
+  key:           "items/#{Date.today.strftime('%Y/%m')}/{timestamp}-{unique-id}-#{SecureRandom.hex}-{filename}",
   custom_fields: {aaa:1,bbb:2},
   progress_bar_id: 'progress-bar',
-  drop_paste_zone_id: 'dropzone',
-  store_path:    "/items/#{Date.today.strftime('%Y/%m')}" do %>
+  drop_paste_zone_id: 'dropzone' do %>
 
   <div class="bars" id="progress-bar">
     <%= file_field_tag :file, multiple: true, accept: "image/gif, image/jpeg" %> You can also drag and drop files here
