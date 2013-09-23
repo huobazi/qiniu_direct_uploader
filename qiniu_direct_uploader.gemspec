@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.email         = ["huobazi@gmail.com"]
   s.description   = %q{Direct upload to a Qiniu storage bucket.}
   s.summary       = %q{Direct upload to a Qiniu storage bucket.}
-  s.homepage      = "https://github.com/huobazi/qiniu_direct_upuloader"
+  s.homepage      = "https://github.com/huobazi/qiniu_direct_uploader"
   s.license       = "MIT"
 
   s.files         = `git ls-files`.split($/)
