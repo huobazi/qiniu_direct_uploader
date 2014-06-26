@@ -1,6 +1,6 @@
 # QiniuDirectUploader
 
-This Gem can direct upload your files to a Qiniu storage bucket
+This Gem can direct upload your files to a Qiniu storage bucket.
 
 ## Installation
 
