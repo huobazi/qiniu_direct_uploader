@@ -77,11 +77,11 @@ module QiniuDirectUploader
     end
 
     def token
-      Qiniu::RS.generate_upload_token scope: @options[:bucket],
-        escape: 1,
-        expires_in: @options[:expires_in],
-        return_body: return_body,
-        customer: @options[:customer]
+      put_policy = Qiniu::Auth::PutPolicy.new( @options[:bucket], nil, @options[:expires_in], nil )
+      put_policy.return_body = return_body
+      put_policy.end_user = @options[:customer]
+
+      Qiniu::Auth.generate_uptoken(put_policy)
     end
   end
 end
