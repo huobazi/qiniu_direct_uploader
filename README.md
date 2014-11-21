@@ -35,6 +35,9 @@ see the example project: https://github.com/huobazi/qiniu-direct-upload-example
   </div>
 <% end %>
 ```
+
+see the save_key settings: http://developer.qiniu.com/docs/v6/api/overview/up/response/vars.html#magicvar
+
 ### Javascript
 ```coffee
 $(document).ready ->
