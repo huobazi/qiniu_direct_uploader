@@ -31,23 +31,19 @@ module QiniuDirectUploader
     end
 
     def fields
-      {
-        key: key,
-        token: @options[:token] || token
-      }
+      the_fields = {}
+      the_fields[:token] = @options[:token] || token
+      the_fields[:key] = @options[:key] if @options[:key]
+      the_fields
     end
 
     def custom_fields
       @options[:custom_fields]
     end
 
-    def default_key
-      "uploads/{timestamp}-{unique-id}-#{SecureRandom.hex}-{filename}"
-    end
-
-    def key
-      return @options[:key] if @options[:key]
-      return  default_key
+    def save_key
+      return @options[:save_key] if @options[:save_key]
+      "uploads/$(year)/$(mon)/$(day)/$(etag)/$(fname)"
     end
 
     def action
@@ -77,9 +73,10 @@ module QiniuDirectUploader
     end
 
     def token
-      put_policy = Qiniu::Auth::PutPolicy.new( @options[:bucket], nil, @options[:expires_in], nil )
+      put_policy = Qiniu::Auth::PutPolicy.new( @options[:bucket], @options[:key], @options[:expires_in], nil )
       put_policy.return_body = return_body
-      put_policy.end_user = @options[:customer]
+      put_policy.save_key = save_key
+      put_policy.end_user = @options[:customer] if @options[:customer]
 
       Qiniu::Auth.generate_uptoken(put_policy)
     end

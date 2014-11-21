@@ -25,7 +25,7 @@ see the example project: https://github.com/huobazi/qiniu-direct-upload-example
 <%= qiniu_uploader_form callback_url: items_path,
   bucket:        'spec-test',
   id:            "photograph-uploader",
-  key:           "items/#{Date.today.strftime('%Y/%m')}/{timestamp}-{unique-id}-#{SecureRandom.hex}-{filename}",
+  save_key:       "uploads/items/$(year)/$(mon)/$(day)/$(etag)/$(fname)",
   custom_fields: {aaa:1,bbb:2},
   progress_bar_id: 'progress-bar',
   drop_paste_zone_id: 'dropzone' do %>

@@ -46,23 +46,12 @@ $.fn.QiniuUploader = (options) ->
       form.submit() for form in formsForSubmit
       false
 
-  generateRandomString= (length) ->
-    chars = "abcdefghiklmno0123456789pqrstuvwxyz"
-    text = ""
-    i = 0
-    while i < length
-      randomPoz = Math.floor(Math.random() * chars.length)
-      text += chars.substring(randomPoz, randomPoz + 1)
-      i++
-    text
-
   setUploadForm = ->
     inner_settings =
       dropZone: dropPasteZone
       pasteZone: dropPasteZone
       add: (e, data) ->
         file = data.files[0]
-        file.uniqueId = generateRandomString(10) + Math.random().toString(36).substr(2,12)
 
         unless settings.onFilesAdd and not settings.onFilesAdd(file)
           currentFiles.push data
@@ -117,9 +106,6 @@ $.fn.QiniuUploader = (options) ->
         data = form.serializeArray()
 
         key = $uploadForm.data("key")
-          .replace('{timestamp}', new Date().getTime())
-          .replace('{unique-id}', @files[0].uniqueId)
-          .replace('{filename}', @files[0].name)
 
         # substitute upload timestamp and uniqueId into key
         keyField = $.grep data, (n) ->
