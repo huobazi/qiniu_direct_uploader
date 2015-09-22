@@ -47,7 +47,7 @@ module QiniuDirectUploader
     end
 
     def action
-      @options[:action] || "http#{@options[:ssl] ? 's' : ''}://up.qiniu.com/"
+      @options[:action] || default_upload_url
     end
 
     def return_body
@@ -79,6 +79,16 @@ module QiniuDirectUploader
       put_policy.end_user = @options[:customer] if @options[:customer]
 
       Qiniu::Auth.generate_uptoken(put_policy)
+    end
+
+    private
+
+    def default_upload_url
+      if @options[:ssl]
+        "https://up.qbox.me"
+      else
+        "http://up.qiniu.com"
+      end
     end
   end
 end
