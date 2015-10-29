@@ -35,6 +35,7 @@ see the example project: https://github.com/huobazi/qiniu-direct-upload-example
   <div class="bars" id="progress-bar">
     <%= file_field_tag :file, multiple: true, accept: "image/gif, image/jpeg" %> You can also drag and drop files here
   </div>
+  
 <% end %>
 ```
 
