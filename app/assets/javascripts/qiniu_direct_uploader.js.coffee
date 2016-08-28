@@ -100,7 +100,7 @@ $.fn.QiniuUploader = (options) ->
         content.errorThrown = data.errorThrown
 
         data.context.remove() if data.context && settings.removeProgressBarWhenFailed # remove progress bar
-        $uploadForm.trigger("qiniu_upload_failed", [postData])
+        $uploadForm.trigger("qiniu_upload_failed", [content])
 
       formData: (form) ->
         data = form.serializeArray()
