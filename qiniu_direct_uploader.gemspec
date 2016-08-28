@@ -22,7 +22,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'coffee-rails', '>= 3.2.1'
   s.add_dependency 'sass-rails', '>= 3.2.5'
 
-  s.add_dependency 'qiniu', '>= 6.2.1'
+  s.add_dependency 'qiniu', '6.6.0'
 
   s.add_dependency "jquery-fileupload-rails", "~> 0.4.1"
 
