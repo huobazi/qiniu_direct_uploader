@@ -81,3 +81,12 @@ see also:
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+
+
+## Contributors
+
+See the [Contributors List](https://github.com/huobazi/qiniu_direct_uploader/graphs/contributors).
+
+## CHANGE LOG
+
+See the [CHANGELOGS.md](https://github.com/huobazi/qiniu_direct_uploader/blob/master/CHANGELOG.md).
