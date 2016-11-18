@@ -93,7 +93,7 @@ $.fn.QiniuUploader = (options) ->
         $uploadForm.trigger("qiniu_upload_complete", [postData])
 
         currentFiles.splice($.inArray(data, currentFiles), 1) # remove that element from the array
-        $uploadForm.trigger("qiniu_upload_complete", [postData]) unless currentFiles.length
+        $uploadForm.trigger("qiniu_uploads_complete", [postData]) unless currentFiles.length
 
       fail: (e, data) ->
         content = buildCallbackData $uploadForm, data.files[0], data.result
