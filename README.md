@@ -1,6 +1,6 @@
 # Qiniu Direct Uploader
 
-[![Gem Version](https://badge.fury.io/rb/qiniu_direct_uploader@2x.png?0.0.7)](http://badge.fury.io/rb/qiniu_direct_uploader)
+[![Gem Version](https://badge.fury.io/rb/qiniu_direct_uploader@2x.png?0.0.8)](http://badge.fury.io/rb/qiniu_direct_uploader)
 
 This Gem can direct upload your files to a Qiniu storage bucket.
 
